@@ -10,5 +10,5 @@ package Usuarios;
  * @author Ti
  */
 public class UsuarioDados {
-    
+    private String nome;
 }
