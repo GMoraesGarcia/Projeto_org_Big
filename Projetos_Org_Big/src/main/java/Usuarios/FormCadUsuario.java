@@ -5,6 +5,13 @@
  */
 package Usuarios;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ti
@@ -32,18 +39,20 @@ public class FormCadUsuario extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtNome_Computador = new javax.swing.JTextField();
-        txtTelefone = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtEmail1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtFuncao = new javax.swing.JTextField();
+        txtTelefone = new javax.swing.JFormattedTextField();
         Botoes = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusable(false);
+        setResizable(false);
 
         jLabel1.setText("Nome");
 
@@ -54,6 +63,12 @@ public class FormCadUsuario extends javax.swing.JFrame {
         jLabel5.setText("Nome do Computador");
 
         jLabel6.setText("Função");
+
+        try {
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout Dados_UsuarioLayout = new javax.swing.GroupLayout(Dados_Usuario);
         Dados_Usuario.setLayout(Dados_UsuarioLayout);
@@ -71,10 +86,10 @@ public class FormCadUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dados_UsuarioLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(Dados_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTelefone)
                     .addComponent(txtFuncao)
-                    .addComponent(txtEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                     .addComponent(txtNome_Computador, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dados_UsuarioLayout.createSequentialGroup()
                         .addGroup(Dados_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -99,12 +114,12 @@ public class FormCadUsuario extends javax.swing.JFrame {
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,6 +198,61 @@ public class FormCadUsuario extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
+        String nomeStr = txtNome.getText();
+        String telefoneStr = txtTelefone.getText();
+        String emailStr = txtEmail.getText();
+        String funcaoStr = txtFuncao.getText();
+
+        //Validação de Nome
+        boolean nomeValido = (nomeStr != null) && nomeStr.trim().length() > 0;
+
+        //Validação de e-mail
+        boolean emailValido = (emailStr != null && emailStr.trim().length() > 0);
+
+        //Validação de Telefone
+        boolean telefoneValido = telefoneStr != null && telefoneStr.trim().length() > 0;
+        if (telefoneValido) {
+            Pattern telefonePattern = Pattern.compile("(\\([0-9]{2}\\))\\s([9]{1})?([0-9]{4})-([0-9]{4})");
+            Matcher telefoneMatcher = telefonePattern.matcher(telefoneStr);
+            telefoneValido = telefoneValido && telefoneMatcher.matches();
+        }
+
+        boolean funcaoValida = (funcaoStr != null) && funcaoStr.trim().length() > 0;
+
+        boolean camposValidos = nomeValido && telefoneValido && emailValido && funcaoValida;
+
+        if (!camposValidos) {
+            if (!nomeValido) {
+                JOptionPane.showMessageDialog(null, "Nome Inserido é nulo ou inválido");
+            }
+
+            if (!emailValido) {
+                JOptionPane.showMessageDialog(null, "E-mail Inserido é nulo ou inválido");
+            }
+
+            if (!telefoneValido) {
+                JOptionPane.showMessageDialog(null, "Telefone Inserido é nulo ou inválido");
+            }
+
+            if (!funcaoValida) {
+                JOptionPane.showMessageDialog(null, "Função Inserido é nulo ou inválido");
+            }
+        } else {
+            UsuarioDados user = new UsuarioDados();
+            usuariosDAO dao = new usuariosDAO();
+
+            user.setNome(nomeStr);
+            user.setTelefone(telefoneStr);
+            user.setEmail(emailStr);
+            user.setFuncao(funcaoStr);
+
+            try {
+
+                dao.addUser(user);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
@@ -231,10 +301,10 @@ public class FormCadUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFuncao;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNome_Computador;
-    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

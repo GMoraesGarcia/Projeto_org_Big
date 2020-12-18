@@ -12,6 +12,8 @@ public class DadosPc {
     
     private String gpu;
     
+    private int qtdModulosRam;
+    
     private int ram;
     
     private int numeroAnyDesk;
@@ -41,6 +43,16 @@ public class DadosPc {
     public void setGpu(String gpu) {
         this.gpu = gpu;
     }
+
+    public int getQtdModulosRam() {
+        return qtdModulosRam;
+    }
+
+    public void setQtdModulosRam(int qtdModulosRam) {
+        this.qtdModulosRam = qtdModulosRam;
+    }
+    
+    
 
     public int getRam() {
         return ram;

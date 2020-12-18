@@ -11,6 +11,16 @@ public class UsuarioDados {
     
     private String funcao;
 
+    public UsuarioDados(String nome, String telefone, String email, String funcao) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.funcao = funcao;
+    }
+
+    public UsuarioDados() {
+    }
+
     public String getNome() {
         return nome;
     }
