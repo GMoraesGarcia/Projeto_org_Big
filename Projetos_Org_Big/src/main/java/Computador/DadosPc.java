@@ -52,8 +52,6 @@ public class DadosPc {
         this.qtdModulosRam = qtdModulosRam;
     }
     
-    
-
     public int getRam() {
         return ram;
     }
