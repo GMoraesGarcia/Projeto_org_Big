@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -148,11 +149,11 @@ public class CadPc extends javax.swing.JFrame {
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(322, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,12 +276,21 @@ public class CadPc extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
-        computadorDao dao = new computadorDao();
+        
+        String nomeComputador = txtPesquisar.getText();
+       DefaultTableModel modelo = (DefaultTableModel) tbcadPc.getModel();
+       modelo.setNumRows(0);
        
-           // DadosPc pc = dao.findComputer(txtPesquisar.getText());
-            
-          //  for(DadosPc pc:dao.findComputer(txtPesquisar.getText()))
-     
+       computadorDao dao = new computadorDao();
+      
+            for(DadosPc pc : dao.findComputer(nomeComputador)){   
+                modelo.addRow(new Object[]{pc.getNomePc(),"0",pc.getCpu(),pc.getGpu(),pc.getRam(),pc.getNumeroAnyDesk(),pc.getSenhaAnyDesk(),
+                });
+             
+             
+            }
+       
+               
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**

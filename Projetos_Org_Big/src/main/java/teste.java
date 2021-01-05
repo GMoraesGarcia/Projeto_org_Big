@@ -12,7 +12,7 @@ public class teste {
     public static void main(String[] args) {
         String nomeComputador = "glitter";
         
-                String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where nome_computador LIKE " + "%'"+nomeComputador+ "'%";
+                String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where nome_computador LIKE " + "'%"+nomeComputador+ "%'";
         System.out.println(sql);
     }
     
