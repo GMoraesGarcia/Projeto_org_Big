@@ -1,0 +1,38 @@
+CREATE DATABASE dbBig;
+use dbBig;
+
+
+CREATE TABLE usuarios(
+id_user int auto_increment,
+nome varchar(50) not null,
+telefone varchar(20) not null,
+email varchar(30) not null,
+funcao varchar(30) not null,
+data_cad timestamp,
+PRIMARY KEY (id_user),
+UNIQUE(telefone),
+UNIQUE(email)
+);
+
+
+CREATE TABLE Computador(
+id_pc int auto_increment,
+nome_computador varchar(30),
+processador varchar(30),
+placaDeVideo varchar(30),
+ram int,
+numeroAnyDesk int,
+senhaAnyDesk varchar(30),
+UNIQUE (id_pc),
+PRIMARY KEY (nome_computador)
+);
+
+CREATE TABLE computadorPorUsuario(
+id_usuario int not null,
+nome_computador varchar(30) not null,
+data_cadastro timestamp not null,
+FOREIGN KEY (id_usuario) REFERENCES usuarios (id_user),
+FOREIGN KEY (nome_computador) REFERENCES computador (nome_computador)
+);
+
+
