@@ -54,6 +54,8 @@ public class CadPc extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
         txtSenhaAnyDesk = new javax.swing.JPasswordField();
+        jLabel8 = new javax.swing.JLabel();
+        txtQtdMaquinas = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -117,6 +119,14 @@ public class CadPc extends javax.swing.JFrame {
 
         jLabel7.setText("Nome Computador");
 
+        jLabel8.setText("Quantidade de máquinas");
+
+        txtQtdMaquinas.setEditable(false);
+        txtQtdMaquinas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        txtQtdMaquinas.setForeground(new java.awt.Color(255, 51, 51));
+        txtQtdMaquinas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtQtdMaquinas.setBorder(null);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,9 +175,13 @@ public class CadPc extends javax.swing.JFrame {
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisar)
-                        .addContainerGap(322, Short.MAX_VALUE))
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtQtdMaquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))))
         );
@@ -180,7 +194,9 @@ public class CadPc extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnPesquisar)
-                            .addComponent(jLabel7)))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(txtQtdMaquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
@@ -311,7 +327,7 @@ public class CadPc extends javax.swing.JFrame {
         String numeroAnyDesk = txtAnyDesk.getText();
 
         if (nomeComputador.trim().length() > 0) {
-
+            int i=0;
             DefaultTableModel modelo = (DefaultTableModel) tbcadPc.getModel();
             modelo.setNumRows(0);
 
@@ -319,10 +335,11 @@ public class CadPc extends javax.swing.JFrame {
 
             for (DadosPc pc : dao.findComputer(nomeComputador)) {
                 modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),});
-
+                i++;
             }
+            txtQtdMaquinas.setText(String.valueOf(i));
         } else if (cpu.trim().length() > 0 && gpu.trim().length() == 0) {
-
+            int i =0;
             DefaultTableModel modelo = (DefaultTableModel) tbcadPc.getModel();
             modelo.setNumRows(0);
 
@@ -330,11 +347,12 @@ public class CadPc extends javax.swing.JFrame {
 
             for (DadosPc pc : dao.findComputerByCpu(cpu)) {
                 modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),});
-
+                i++;
             }
+            txtQtdMaquinas.setText(String.valueOf(i));
 
         } else if (gpu.trim().length() > 0 && cpu.trim().length() == 0) {
-
+            int i =0;
             DefaultTableModel modelo = (DefaultTableModel) tbcadPc.getModel();
             modelo.setNumRows(0);
 
@@ -342,10 +360,12 @@ public class CadPc extends javax.swing.JFrame {
 
             for (DadosPc pc : dao.findComputerByGpu(gpu)) {
                 modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),});
-
+                i++;
             }
+            txtQtdMaquinas.setText(String.valueOf(i));
 
         } else if (ram.trim().length() > 0) {
+            int i =0;
 
             DefaultTableModel modelo = (DefaultTableModel) tbcadPc.getModel();
             modelo.setNumRows(0);
@@ -354,11 +374,12 @@ public class CadPc extends javax.swing.JFrame {
 
             for (DadosPc pc : dao.findComputerByRam(ram)) {
                 modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),});
-
+                i++;
             }
+            txtQtdMaquinas.setText(String.valueOf(i));
 
         } else if (numeroAnyDesk.trim().length() > 0) {
-
+            int i =0;
             DefaultTableModel modelo = (DefaultTableModel) tbcadPc.getModel();
             modelo.setNumRows(0);
 
@@ -366,10 +387,14 @@ public class CadPc extends javax.swing.JFrame {
 
             for (DadosPc pc : dao.findComputerByAnyDesk(numeroAnyDesk)) {
                 modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),});
-
+                i++;
             }
+            
+            txtQtdMaquinas.setText(String.valueOf(i));
+            
 
         } else if (cpu.trim().length() > 0 && gpu.trim().length() > 0) {
+            int i =0;
             DefaultTableModel modelo = (DefaultTableModel) tbcadPc.getModel();
             modelo.setNumRows(0);
 
@@ -377,8 +402,9 @@ public class CadPc extends javax.swing.JFrame {
 
             for (DadosPc pc : dao.findComputerByAnyCpuAndGpu(cpu, gpu)) {
                 modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),});
-
+                i++;
             }
+            txtQtdMaquinas.setText(String.valueOf(i));
 
         } else {
             
@@ -393,8 +419,8 @@ public class CadPc extends javax.swing.JFrame {
                 i++;
 
             }
-            
-            System.out.println(i);
+            txtQtdMaquinas.setText(String.valueOf(i));
+       
         }
 
         txtAnyDesk.setText("");
@@ -404,6 +430,7 @@ public class CadPc extends javax.swing.JFrame {
         txtPesquisar.setText("");
         txtRam.setText("");
         txtSenhaAnyDesk.setText("");
+        txtNomeComputador.enable(true);
 
     //txtNomeEmpresa.setText((String) TableFornecedores.getValueAt(TableFornecedores.getSelectedRow(),0));
     }//GEN-LAST:event_btnPesquisarActionPerformed
@@ -416,6 +443,8 @@ public class CadPc extends javax.swing.JFrame {
         txtRam.setText(String.valueOf(tbcadPc.getValueAt(tbcadPc.getSelectedRow(),4)));
         txtAnyDesk.setText(String.valueOf(tbcadPc.getValueAt(tbcadPc.getSelectedRow(),5)));
         txtSenhaAnyDesk.setText(String.valueOf(tbcadPc.getValueAt(tbcadPc.getSelectedRow(),6)));
+        
+        txtNomeComputador.enable(false);
     }//GEN-LAST:event_tbcadPcMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -440,6 +469,8 @@ public class CadPc extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
+         
+         txtNomeComputador.enable(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -451,6 +482,8 @@ public class CadPc extends javax.swing.JFrame {
         txtPesquisar.setText("");
         txtRam.setText("");
         txtSenhaAnyDesk.setText("");
+        
+           txtNomeComputador.enable(true);
     }//GEN-LAST:event_btnLimparActionPerformed
 
     /**
@@ -501,6 +534,7 @@ public class CadPc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbcadPc;
     private javax.swing.JTextField txtAnyDesk;
@@ -508,6 +542,7 @@ public class CadPc extends javax.swing.JFrame {
     private javax.swing.JTextField txtGPU;
     private javax.swing.JTextField txtNomeComputador;
     private javax.swing.JTextField txtPesquisar;
+    private javax.swing.JTextField txtQtdMaquinas;
     private javax.swing.JTextField txtRam;
     private javax.swing.JPasswordField txtSenhaAnyDesk;
     // End of variables declaration//GEN-END:variables

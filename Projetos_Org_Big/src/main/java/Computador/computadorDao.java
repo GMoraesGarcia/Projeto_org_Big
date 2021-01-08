@@ -296,8 +296,7 @@ public class computadorDao {
                
 
                 stmt.executeUpdate();
-                System.out.println("alterado com secesso");
-
+               JOptionPane.showMessageDialog(null, "Alterado com sucesso");
                 conn.commit();
 
             } catch (SQLException e) {
