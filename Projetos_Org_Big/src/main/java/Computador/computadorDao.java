@@ -47,24 +47,22 @@ public class computadorDao {
 
         }
     }
-
-    public ArrayList<DadosPc> findComputer(String nomeComputador) {
+    
+    public ArrayList<DadosPc> find() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where nome_computador LIKE " + "'%" + nomeComputador + "%'";
+        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador";
         ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
-           
+
         try {
 
             conn = ConnectBd.obterConexao(); // abre e fecha a conexão
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
 
-            
-          
             while (rs.next()) {
-            DadosPc pc = new DadosPc();
+                DadosPc pc = new DadosPc();
                 pc.setNomePc(rs.getString("nome_computador"));
                 pc.setCpu(rs.getString("processador"));
                 pc.setGpu(rs.getString("placaDeVideo"));
@@ -72,15 +70,243 @@ public class computadorDao {
                 pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
                 pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
                 computador.add(pc);
-              
+
             }
             conn.close();
 
         } catch (Exception e) {
             System.out.println(e);
         }
-        
+
         return computador;
     }
 
+    public ArrayList<DadosPc> findComputer(String nomeComputador) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where nome_computador LIKE " + "'%" + nomeComputador + "%'";
+        ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
+
+        try {
+
+            conn = ConnectBd.obterConexao(); // abre e fecha a conexão
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                DadosPc pc = new DadosPc();
+                pc.setNomePc(rs.getString("nome_computador"));
+                pc.setCpu(rs.getString("processador"));
+                pc.setGpu(rs.getString("placaDeVideo"));
+                pc.setRam(rs.getInt("ram"));
+                pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
+                pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
+                computador.add(pc);
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return computador;
+    }
+
+    public ArrayList<DadosPc> findComputerByCpu(String processador) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where Processador LIKE " + "'%" + processador + "%'";
+        ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
+
+        try {
+
+            conn = ConnectBd.obterConexao(); // abre e fecha a conexão
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                DadosPc pc = new DadosPc();
+                pc.setNomePc(rs.getString("nome_computador"));
+                pc.setCpu(rs.getString("processador"));
+                pc.setGpu(rs.getString("placaDeVideo"));
+                pc.setRam(rs.getInt("ram"));
+                pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
+                pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
+                computador.add(pc);
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return computador;
+
+    }
+
+    public ArrayList<DadosPc> findComputerByGpu(String placaDeVideo) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where placadevideo LIKE " + "'%" + placaDeVideo + "%'";
+        ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
+
+        try {
+
+            conn = ConnectBd.obterConexao(); // abre e fecha a conexão
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                DadosPc pc = new DadosPc();
+                pc.setNomePc(rs.getString("nome_computador"));
+                pc.setCpu(rs.getString("processador"));
+                pc.setGpu(rs.getString("placaDeVideo"));
+                pc.setRam(rs.getInt("ram"));
+                pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
+                pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
+                computador.add(pc);
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return computador;
+    }
+
+    public ArrayList<DadosPc> findComputerByRam(String ram) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where ram LIKE " + "'%" + ram + "%'";
+        ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
+
+        try {
+
+            conn = ConnectBd.obterConexao(); // abre e fecha a conexão
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                DadosPc pc = new DadosPc();
+                pc.setNomePc(rs.getString("nome_computador"));
+                pc.setCpu(rs.getString("processador"));
+                pc.setGpu(rs.getString("placaDeVideo"));
+                pc.setRam(rs.getInt("ram"));
+                pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
+                pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
+                computador.add(pc);
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return computador;
+    }
+
+    public ArrayList<DadosPc> findComputerByAnyDesk(String NumeroAnyDesk) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where numeroanydesk LIKE " + "'%" + NumeroAnyDesk + "%'";
+        ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
+
+        try {
+
+            conn = ConnectBd.obterConexao(); // abre e fecha a conexão
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                DadosPc pc = new DadosPc();
+                pc.setNomePc(rs.getString("nome_computador"));
+                pc.setCpu(rs.getString("processador"));
+                pc.setGpu(rs.getString("placaDeVideo"));
+                pc.setRam(rs.getInt("ram"));
+                pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
+                pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
+                computador.add(pc);
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return computador;
+    }
+    
+     public ArrayList<DadosPc> findComputerByAnyCpuAndGpu(String cpu, String gpu) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where processador LIKE " + "'%" + cpu + "%' and placadevideo LIKE " + "'%" + gpu + "%'";
+        ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
+
+        try {
+
+            conn = ConnectBd.obterConexao(); // abre e fecha a conexão
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                DadosPc pc = new DadosPc();
+                pc.setNomePc(rs.getString("nome_computador"));
+                pc.setCpu(rs.getString("processador"));
+                pc.setGpu(rs.getString("placaDeVideo"));
+                pc.setRam(rs.getInt("ram"));
+                pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
+                pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
+                computador.add(pc);
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return computador;
+    }
+     
+     public void Update(DadosPc pc) throws SQLException {
+        String sql = "UPDATE computador set processador = ?, placadevideo=?,ram=?,numeroanydesk=?,senhaanydesk=? where nome_computador = ?;";
+        try (Connection conn = ConnectBd.obterConexao()) {
+            // DESLIGAR AUTO-COMMIT -> POSSIBILITAR DESFAZER OPERACOES EM CASOS DE ERROS
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, pc.getCpu());
+                stmt.setString(2, pc.getGpu());
+                stmt.setString(3, String.valueOf(pc.getRam()));
+                stmt.setString(4, String.valueOf(pc.getNumeroAnyDesk()));
+                stmt.setString(5, String.valueOf(pc.getSenhaAnyDesk()));
+                stmt.setString(6, pc.getNomePc());
+               
+
+                stmt.executeUpdate();
+                System.out.println("alterado com secesso");
+
+                conn.commit();
+
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+
+        }
+    }
+    
+    
 }
