@@ -59,6 +59,11 @@ public class CadPc extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jLabel1.setText("Nome Do Computador");
 
@@ -87,6 +92,11 @@ public class CadPc extends javax.swing.JFrame {
         });
 
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -471,6 +481,13 @@ public class CadPc extends javax.swing.JFrame {
             }
          
          txtNomeComputador.enable(true);
+          txtAnyDesk.setText("");
+        txtCPU.setText("");
+        txtGPU.setText("");
+        txtNomeComputador.setText("");
+        txtPesquisar.setText("");
+        txtRam.setText("");
+        txtSenhaAnyDesk.setText("");
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -485,6 +502,15 @@ public class CadPc extends javax.swing.JFrame {
         
            txtNomeComputador.enable(true);
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseMoved
 
     /**
      * @param args the command line arguments

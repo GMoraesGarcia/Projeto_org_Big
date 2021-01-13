@@ -23,9 +23,9 @@ public class ConnectBd {
         }
         
         // 2) Abrir a conexão
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbBig?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC",
-                "root", // Usuário de conexão no BD
-                "03102327"); // Senha
+        Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.15.254:3306/dbBig?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC",
+                "Gabriel", // Usuário de conexão no BD
+                "Pontanegra123"); // Senha
         return conn ;
     }
 }

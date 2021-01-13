@@ -1,3 +1,7 @@
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,11 +13,14 @@
  * @author Ti
  */
 public class teste {
-    public static void main(String[] args) {
-        String nomeComputador = "glitter";
+    public static void main(String[] args) throws UnknownHostException {
         
-                String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador where nome_computador LIKE " + "'%"+nomeComputador+ "%'";
-        System.out.println(sql);
+        //Retorna o nome do computador
+        InetAddress addr = InetAddress.getLocalHost();
+        String hostname = addr.getHostName();
+        System.out.println(hostname);
+         //Retorna o nome do computador *********fim***********
+               
     }
     
 }
