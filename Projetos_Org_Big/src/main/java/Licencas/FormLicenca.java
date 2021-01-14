@@ -5,6 +5,14 @@
  */
 package Licencas;
 
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
+
 /**
  *
  * @author Ti
@@ -16,6 +24,22 @@ public class FormLicenca extends javax.swing.JFrame {
      */
     public FormLicenca() {
         initComponents();
+    }
+
+    public MaskFormatter maskchave(JFormattedTextField textfield) throws ParseException {
+        MaskFormatter mask = null;
+        mask = new MaskFormatter("####-####-####-####");
+        mask.setOverwriteMode(true);
+        mask.install(textfield);
+        return mask;
+    }
+
+    public MaskFormatter nullmask(JFormattedTextField textfield) throws ParseException {
+        MaskFormatter mask = null;
+        mask = new MaskFormatter("####@######");
+        mask.setOverwriteMode(true);
+        mask.install(textfield);
+        return mask;
     }
 
     /**
@@ -32,10 +56,10 @@ public class FormLicenca extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbTipo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        txtAcesso = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtComputador = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
+        txtAcesso = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +70,11 @@ public class FormLicenca extends javax.swing.JFrame {
         jLabel2.setText("Tipo");
 
         cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha...", "Chave", "Flutuante" }));
+        cbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Acesso");
 
@@ -81,8 +110,8 @@ public class FormLicenca extends javax.swing.JFrame {
                                 .addGap(40, 40, 40)
                                 .addComponent(jLabel3))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtComputador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                .addComponent(txtAcesso, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(txtAcesso, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtComputador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jLabel4))
@@ -105,7 +134,7 @@ public class FormLicenca extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -120,8 +149,55 @@ public class FormLicenca extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        
+        String licenca = cbLicencas.getSelectedItem().toString();
+        String tipo = cbTipo.getSelectedItem().toString();
+        String acesso = txtAcesso.getText();
+
+        if (licenca.equalsIgnoreCase("escolha...")) {
+            JOptionPane.showMessageDialog(null, "Escolha uma licença!!");
+        }
+
+        if (tipo.equalsIgnoreCase("escolha...")) {
+            JOptionPane.showMessageDialog(null, "Escolha um tipo de licença!!");
+        } else {
+
+            try {
+                LicencaDados dados = new LicencaDados();
+                LicencaDAO dao = new LicencaDAO();
+
+                dados.setAcesso(acesso);
+                dados.setNome(licenca);
+                dados.setTipo(tipo);
+                dao.Addlicenca(dados);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
+        }
+
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
+        // TODO add your handling code here:
+        String tipo = cbTipo.getSelectedItem().toString();
+
+        /* if (tipo.equalsIgnoreCase("chave")) {
+            try {
+                maskchave(txtAcesso);
+            } catch (ParseException ex) {
+                System.out.println(ex);
+            }
+
+        }
+       else if (tipo.equalsIgnoreCase("flutuante")) {
+            try {
+                nullmask(txtAcesso);
+            } catch (ParseException ex) {
+                System.out.println(ex);
+            }
+        }*/
+    }//GEN-LAST:event_cbTipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,7 +242,7 @@ public class FormLicenca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtAcesso;
+    private javax.swing.JFormattedTextField txtAcesso;
     private javax.swing.JTextField txtComputador;
     // End of variables declaration//GEN-END:variables
 }
