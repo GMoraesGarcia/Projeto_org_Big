@@ -213,7 +213,7 @@ public class CadPc extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(73, 73, 73))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -238,7 +238,7 @@ public class CadPc extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSenhaAnyDesk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCadastrar)
                             .addComponent(btnLimpar))
@@ -246,7 +246,7 @@ public class CadPc extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAlterar)
                             .addComponent(btnSair))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
 
         pack();
@@ -255,7 +255,7 @@ public class CadPc extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
 
-        DadosPc pc = new DadosPc();
+        
         computadorDao dao = new computadorDao();
 
         String nomeComputador = txtNomeComputador.getText();
@@ -306,12 +306,10 @@ public class CadPc extends javax.swing.JFrame {
         } else {
 
             try {
-                pc.setNomePc(nomeComputador);
-                pc.setCpu(processador);
-                pc.setGpu(placaDeVideo);
-                pc.setRam(Integer.parseInt(RAM));
-                pc.setNumeroAnyDesk(Integer.parseInt(numeroAnyDesk));
-                pc.setSenhaAnyDesk(senhaAnyDesk);
+       
+              DadosPc pc = new DadosPc(nomeComputador, processador, placaDeVideo, 
+                        Integer.parseInt(RAM), Integer.parseInt(numeroAnyDesk), senhaAnyDesk);
+              
                 dao.addComputador(pc);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);

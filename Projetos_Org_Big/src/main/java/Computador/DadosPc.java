@@ -5,22 +5,37 @@ package Computador;
 
 
 
-public class DadosPc {
-    private String nomePc;
+public  class DadosPc {
+    protected String nomePc;
     
-    private String cpu;
+    protected String cpu;
     
-    private String gpu;
+    protected String gpu;
     
-    private int ram;
+    protected int ram;
     
-    private int numeroAnyDesk;
+    protected int numeroAnyDesk;
     
-    private String senhaAnyDesk;
+    protected String senhaAnyDesk;
+
+    public DadosPc(String nomePc, String cpu, String gpu, int ram, int numeroAnyDesk, String senhaAnyDesk) {
+        this.nomePc = nomePc;
+        this.cpu = cpu;
+        this.gpu = gpu;
+        this.ram = ram;
+        this.numeroAnyDesk = numeroAnyDesk;
+        this.senhaAnyDesk = senhaAnyDesk;
+    }
+    
+    public DadosPc(){
+    }
+    
+    
 
     public String getNomePc() {
         return nomePc;
     }
+   
 
     public void setNomePc(String nomePc) {
         this.nomePc = nomePc;
