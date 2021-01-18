@@ -5,7 +5,6 @@
  */
 package Licencas;
 
-
 import ConexaoBanco.ConnectBd;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,13 +16,13 @@ import javax.swing.JOptionPane;
  * @author Ti
  */
 public class LicencaDAO {
-    
+
     public void Addlicenca(LicencaDados dados) throws SQLException {
 
         String sql = "insert into licenca(nome,acesso) values(?,?);";
 
         try (Connection conn = ConnectBd.obterConexao()) {
-            
+
             conn.setAutoCommit(false);
 
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -41,15 +40,16 @@ public class LicencaDAO {
 
         }
     }
-    
-       public void AddPcLicenca(LicencaDados dados) throws SQLException {
+
+    public void AddPcLicenca(LicencaDados dados) throws SQLException {
 
         String sql1 = "insert into licenca(nome,acesso) values(?,?);";
         String sql2 = "insert into computador(nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk) values(?,?,?,?,?,?)";
+        String sql3 = "call sp_addLicencaPorComputador(?)";
 
-
+        //Realiza o cadastro da licença
         try (Connection conn = ConnectBd.obterConexao()) {
-            
+
             conn.setAutoCommit(false);
 
             try (PreparedStatement stmt = conn.prepareStatement(sql1)) {
@@ -65,9 +65,10 @@ public class LicencaDAO {
             }
 
         }
-        
+
+        //Realiza o cadastro do computador
         try (Connection conn = ConnectBd.obterConexao()) {
-            
+
             conn.setAutoCommit(false);
 
             try (PreparedStatement stmt = conn.prepareStatement(sql2)) {
@@ -78,8 +79,47 @@ public class LicencaDAO {
                 stmt.setInt(5, dados.getNumeroAnyDesk());
                 stmt.setString(6, dados.getSenhaAnyDesk());
                 stmt.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!!");
 
+                conn.commit();
+
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+
+        }
+        try (Connection conn = ConnectBd.obterConexao()) {
+
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement stmt = conn.prepareStatement(sql3)) {
+                stmt.setString(1, dados.getNomePc());
+                stmt.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!!");
+                conn.commit();
+
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+
+        }
+
+    }
+    
+    public void addLicenca (String pc, String chave) throws SQLException {
+        String sql = "call sp_addLicencaPorComputador(?,?)";
+       
+        
+     try (Connection conn = ConnectBd.obterConexao()) {
+
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, pc);
+                stmt.setString(2, chave);
+                stmt.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Licença adicionada a máquina "+ pc+" com sucesso!!");
                 conn.commit();
 
             } catch (SQLException e) {
@@ -90,4 +130,26 @@ public class LicencaDAO {
         }
     }
     
+    public void addLi(LicencaDados dados) throws SQLException{
+       String sql1 = "insert into licenca(nome,acesso) values(?,?);";
+       
+        try (Connection conn = ConnectBd.obterConexao()) {
+
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement stmt = conn.prepareStatement(sql1)) {
+                stmt.setString(1, dados.getNome());
+                stmt.setString(2, dados.getAcesso());
+                stmt.executeUpdate();
+
+                conn.commit();
+
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+
+        }
+    }
+
 }
