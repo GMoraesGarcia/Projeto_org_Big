@@ -26,6 +26,7 @@ public class CadPc extends javax.swing.JFrame {
         initComponents();
         txtLicenca.setVisible(false);
         lblLicenca.setVisible(false);
+        btnAddLicenca.setVisible(false);
 
     }
 
@@ -129,7 +130,7 @@ public class CadPc extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome do Computador", "Usuário", "Processador", "Placa de Video", "Memória RAM", "Número AnyDesk", "Senha AnyDesk"
+                "Nome do Computador", "Usuário", "Processador", "Placa de Video", "Memória RAM", "Número AnyDesk", "Senha AnyDesk", "Licença", "Chave de acesso"
             }
         ));
         tbcadPc.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -218,43 +219,43 @@ public class CadPc extends javax.swing.JFrame {
                                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(cbSim)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbNao))
-                                    .addComponent(lblPergunta)
-                                    .addComponent(txtSenhaAnyDesk, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                                    .addComponent(txtNomeComputador, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCPU, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtGPU, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRam, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAnyDesk, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLicenca, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAddLicenca))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(cbSim)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbNao))
+                                .addComponent(lblPergunta)
+                                .addComponent(txtSenhaAnyDesk, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                                .addComponent(txtNomeComputador, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCPU, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtGPU, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtRam, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtAnyDesk, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtLicenca, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(lblLicenca)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblLicenca))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(btnAddLicenca)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisar)
-                        .addGap(89, 89, 89)
+                        .addGap(57, 57, 57)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtQtdMaquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(194, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 26, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,10 +309,10 @@ public class CadPc extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLicenca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLicenca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAddLicenca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addComponent(txtLicenca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAddLicenca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCadastrar)
                             .addComponent(btnLimpar))
@@ -509,8 +510,8 @@ public class CadPc extends javax.swing.JFrame {
 
             computadorDao dao = new computadorDao();
 
-            for (DadosPc pc : dao.find()) {
-                modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),});
+            for (LicencaDados pc : dao.find()) {
+                modelo.addRow(new Object[]{pc.getNomePc(), "0", pc.getCpu(), pc.getGpu(), pc.getRam(), pc.getNumeroAnyDesk(), pc.getSenhaAnyDesk(),pc.getNome(),pc.getAcesso()});
                 i++;
 
             }
@@ -610,6 +611,7 @@ public class CadPc extends javax.swing.JFrame {
 
             txtLicenca.setVisible(false);
             lblLicenca.setVisible(false);
+             btnAddLicenca.setVisible(false);
         }
     }//GEN-LAST:event_cbNaoMouseClicked
 
@@ -619,6 +621,7 @@ public class CadPc extends javax.swing.JFrame {
 
             txtLicenca.setVisible(true);
             lblLicenca.setVisible(true);
+            btnAddLicenca.setVisible(true);
         }
     }//GEN-LAST:event_cbSimMouseClicked
 
@@ -635,19 +638,28 @@ public class CadPc extends javax.swing.JFrame {
         String NomeLi = li1.getNomeLicenca(chave);
 
         LicencaDAO dao = new LicencaDAO();
-       /* if (NomeLi == "-1") {
+        if (NomeLi == "-1") {
             JOptionPane.showMessageDialog(null, "Licença Incorreta");
-        } else {
-            LicencaDados li = new LicencaDados();
-            li.getAcesso();
-
-            dao.addLi(li);
-        }*/
-        try {
-            dao.addLicenca(nomePc, chave);
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        } 
+        
+        else if(NomeLi == "Nuke"){
+            try {
+                dao.addLicenca(nomePc, chave);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
         }
+        
+        else {
+            try {
+                LicencaDados li = new LicencaDados(NomeLi, chave);
+                dao.addLi(li);
+                dao.addLicenca(nomePc, chave);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
+       
 
     }//GEN-LAST:event_btnAddLicencaActionPerformed
 

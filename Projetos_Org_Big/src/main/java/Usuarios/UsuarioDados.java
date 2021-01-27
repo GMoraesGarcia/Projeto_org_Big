@@ -1,21 +1,15 @@
-
 package Usuarios;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class UsuarioDados {
-    private String nome;
-    
-    private String telefone;
-    
-    private String email;
-    
-    private String funcao;
 
-    public UsuarioDados(String nome, String telefone, String email, String funcao) {
+    private String nome;
+
+    public UsuarioDados(String nome, String funcao) {
         this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.funcao = funcao;
+
     }
 
     public UsuarioDados() {
@@ -29,28 +23,11 @@ public class UsuarioDados {
         this.nome = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getNomeComputador() throws UnknownHostException {
+        InetAddress addr = InetAddress.getLocalHost();
+        String hostname = addr.getHostName();
+
+        return hostname;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
-    }
-  
 }

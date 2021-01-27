@@ -25,6 +25,11 @@ public class LicencaDados extends DadosPc {
     
     public LicencaDados(){
     }
+    
+    public LicencaDados(String nome, String acesso){
+        this.acesso = acesso;
+        this.nome = nome;
+    }
 
     public String getNome() {
         return nome;

@@ -70,10 +70,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadUserActionPerformed
         // TODO add your handling code here:
-       FormCadUsuario user = new FormCadUsuario();
-       
-       user.setVisible(true);
-       
+      
+      
        System.exit(0);
         
     }//GEN-LAST:event_btnCadUserActionPerformed

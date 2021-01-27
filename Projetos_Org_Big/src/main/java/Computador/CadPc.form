@@ -66,25 +66,21 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnLimpar" min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cbSim" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="cbNao" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblPergunta" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtSenhaAnyDesk" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" pref="139" max="32767" attributes="0"/>
-                                  <Component id="txtNomeComputador" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtCPU" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtGPU" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtRam" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtAnyDesk" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtLicenca" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cbSim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="cbNao" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnAddLicenca" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPergunta" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSenhaAnyDesk" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" pref="139" max="32767" attributes="0"/>
+                              <Component id="txtNomeComputador" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtCPU" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtGPU" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtRam" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtAnyDesk" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtLicenca" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -92,25 +88,29 @@
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Component id="lblLicenca" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="btnAddLicenca" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txtPesquisar" min="-2" pref="268" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnPesquisar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtQtdMaquinas" min="-2" pref="42" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="194" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="764" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -174,11 +174,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblLicenca" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtLicenca" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAddLicenca" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <Component id="txtLicenca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnAddLicenca" min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -286,7 +285,7 @@
         <Component class="javax.swing.JTable" name="tbcadPc">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="0">
+              <Table columnCount="9" rowCount="0">
                 <Column editable="true" title="Nome do Computador" type="java.lang.Object"/>
                 <Column editable="true" title="Usu&#xe1;rio" type="java.lang.Object"/>
                 <Column editable="true" title="Processador" type="java.lang.Object"/>
@@ -294,10 +293,22 @@
                 <Column editable="true" title="Mem&#xf3;ria RAM" type="java.lang.Object"/>
                 <Column editable="true" title="N&#xfa;mero AnyDesk" type="java.lang.Object"/>
                 <Column editable="true" title="Senha AnyDesk" type="java.lang.Object"/>
+                <Column editable="true" title="Licen&#xe7;a" type="java.lang.Object"/>
+                <Column editable="true" title="Chave de acesso" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>

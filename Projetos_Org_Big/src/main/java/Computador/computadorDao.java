@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import Licencas.*;
 
 /**
  *
@@ -48,12 +49,12 @@ public class computadorDao {
         }
     }
     
-    public ArrayList<DadosPc> find() {
+    public ArrayList<LicencaDados> find() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk FROM computador";
-        ArrayList<DadosPc> computador = new ArrayList<DadosPc>();
+        String sql = "select * from  tbInfoPcLicenca ";
+        ArrayList<LicencaDados> computador = new ArrayList<LicencaDados>();
 
         try {
 
@@ -62,13 +63,16 @@ public class computadorDao {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                DadosPc pc = new DadosPc();
+                LicencaDados pc = new LicencaDados();
                 pc.setNomePc(rs.getString("nome_computador"));
                 pc.setCpu(rs.getString("processador"));
                 pc.setGpu(rs.getString("placaDeVideo"));
                 pc.setRam(rs.getInt("ram"));
                 pc.setNumeroAnyDesk(rs.getInt("numeroAnyDesk"));
                 pc.setSenhaAnyDesk(rs.getString("senhaAnyDesk"));
+                pc.setNome(rs.getString("nome"));
+                pc.setAcesso(rs.getString("acesso"));
+                
                 computador.add(pc);
 
             }

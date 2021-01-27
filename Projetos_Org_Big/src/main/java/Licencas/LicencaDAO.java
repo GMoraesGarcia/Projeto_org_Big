@@ -43,7 +43,7 @@ public class LicencaDAO {
 
     public void AddPcLicenca(LicencaDados dados) throws SQLException {
 
-        String sql1 = "insert into licenca(nome,acesso) values(?,?);";
+        String sql1 = "insert into licenca(nome,acesso,data_cadastro) values(?,?,sysdate());";
         String sql2 = "insert into computador(nome_computador,processador,placadevideo,ram,numeroanydesk,senhaanydesk) values(?,?,?,?,?,?)";
         String sql3 = "call sp_addLicencaPorComputador(?)";
 
@@ -131,14 +131,15 @@ public class LicencaDAO {
     }
     
     public void addLi(LicencaDados dados) throws SQLException{
-       String sql1 = "insert into licenca(nome,acesso) values(?,?);";
+       String sql1 = "insert into licenca(nome,acesso,data_cadastro) values(?,?,sysdate());";
+       String nomeLicenca = dados.getNomeLicenca(dados.getAcesso()) ;
        
         try (Connection conn = ConnectBd.obterConexao()) {
 
             conn.setAutoCommit(false);
 
             try (PreparedStatement stmt = conn.prepareStatement(sql1)) {
-                stmt.setString(1, dados.getNome());
+                stmt.setString(1, nomeLicenca);
                 stmt.setString(2, dados.getAcesso());
                 stmt.executeUpdate();
 
