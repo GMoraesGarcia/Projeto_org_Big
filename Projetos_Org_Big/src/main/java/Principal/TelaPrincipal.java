@@ -7,6 +7,9 @@ package Principal;
 
 import Usuarios.*;
 import Computador.*;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class TelaPrincipal extends javax.swing.JFrame {
 
     /**
@@ -29,6 +32,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnCadUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Principal");
+        setFocusable(false);
+        setResizable(false);
 
         btnCadMaquinas.setText("Cadastro de Máquinas");
         btnCadMaquinas.addActionListener(new java.awt.event.ActionListener() {
@@ -37,7 +43,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnCadUser.setText("Cadastrod e Usários");
+        btnCadUser.setText("Cadastro de Usuários");
         btnCadUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadUserActionPerformed(evt);
@@ -49,30 +55,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(38, 38, 38)
                 .addComponent(btnCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(btnCadMaquinas)
-                .addGap(34, 34, 34))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
+                .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadMaquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                    .addComponent(btnCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadMaquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadUserActionPerformed
-        // TODO add your handling code here:
+      
+        try {
+            // TODO add your handling code here:
+            FormCadUsuario user = new FormCadUsuario();
+            user.setVisible(true);
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
       
       
-       System.exit(0);
+       
         
     }//GEN-LAST:event_btnCadUserActionPerformed
 
@@ -82,7 +95,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         pc.setVisible(true);
         
-        System.exit(0);
+        
     }//GEN-LAST:event_btnCadMaquinasActionPerformed
 
     /**

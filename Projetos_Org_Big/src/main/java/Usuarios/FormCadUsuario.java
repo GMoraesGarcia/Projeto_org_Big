@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Ti
  */
 public class FormCadUsuario extends javax.swing.JFrame {
-    
+
     UsuarioDados user = new UsuarioDados();
     String NomePc;
 
@@ -31,7 +31,7 @@ public class FormCadUsuario extends javax.swing.JFrame {
         txtComputador.setText(NomePc);
     }
 
- /*DJHFDJHFJDFJDHFJDHFJDHFJDFHJDGFYFYSGFYSG*/
+    /*DJHFDJHFJDFJDHFJDHFJDHFJDFHJDGFYFYSGFYSG*/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,11 +41,16 @@ public class FormCadUsuario extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtComputador = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtSobreNome = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtFuncao = new javax.swing.JTextField();
         Botoes = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro Usuários ");
         setFocusable(false);
         setResizable(false);
 
@@ -53,19 +58,19 @@ public class FormCadUsuario extends javax.swing.JFrame {
 
         jLabel2.setText("Nome Computador");
 
-        txtComputador.setEnabled(false);
+        jLabel3.setText("Sobrenome");
+
+        jLabel4.setText("Função");
 
         javax.swing.GroupLayout Dados_UsuarioLayout = new javax.swing.GroupLayout(Dados_Usuario);
         Dados_Usuario.setLayout(Dados_UsuarioLayout);
         Dados_UsuarioLayout.setHorizontalGroup(
             Dados_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dados_UsuarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(41, 41, 41))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dados_UsuarioLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(Dados_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFuncao)
+                    .addComponent(txtSobreNome)
                     .addComponent(txtComputador)
                     .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Dados_UsuarioLayout.createSequentialGroup()
@@ -73,6 +78,18 @@ public class FormCadUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(0, 61, Short.MAX_VALUE)))
                 .addGap(22, 22, 22))
+            .addGroup(Dados_UsuarioLayout.createSequentialGroup()
+                .addGroup(Dados_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Dados_UsuarioLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2))
+                    .addGroup(Dados_UsuarioLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel4))
+                    .addGroup(Dados_UsuarioLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Dados_UsuarioLayout.setVerticalGroup(
             Dados_UsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,11 +98,19 @@ public class FormCadUsuario extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSobreNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtComputador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         btnCadastrar.setText("Cadastrar");
@@ -96,6 +121,11 @@ public class FormCadUsuario extends javax.swing.JFrame {
         });
 
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BotoesLayout = new javax.swing.GroupLayout(Botoes);
         Botoes.setLayout(BotoesLayout);
@@ -136,8 +166,8 @@ public class FormCadUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(Dados_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Dados_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Botoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -149,27 +179,37 @@ public class FormCadUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nomeStr = txtNome.getText();
         String computador = txtComputador.getText();
-     
-            if (nomeStr == null) {
-                JOptionPane.showMessageDialog(null, "Nome Inserido é nulo ou inválido");
-            }
+        String sobreNome = txtSobreNome.getText();
+        String funcao = txtFuncao.getText();
 
-         
-        else {
+        if (nomeStr == null) {
+            JOptionPane.showMessageDialog(null, "Nome Inserido é nulo ou inválido");
+        } else {
             UsuarioDados user = new UsuarioDados();
             usuariosDAO dao = new usuariosDAO();
 
-            user.setNome(nomeStr);
-          
-
+  
             try {
+                user.setNome(nomeStr);
+                user.setSobreNome(sobreNome);
+                user.setFuncao(funcao);
+                dao.addUserPorPc(nomeStr, sobreNome, computador,funcao);
 
-                dao.addUser(user);
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
+
+            txtNome.setText("");
+            txtSobreNome.setText("");
+            txtFuncao.setText("");
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+        
+       dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,7 +257,11 @@ public class FormCadUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtComputador;
+    private javax.swing.JTextField txtFuncao;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSobreNome;
     // End of variables declaration//GEN-END:variables
 }

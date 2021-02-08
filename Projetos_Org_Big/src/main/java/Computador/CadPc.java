@@ -10,7 +10,11 @@ import Licencas.LicencaDados;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -69,6 +73,7 @@ public class CadPc extends javax.swing.JFrame {
         cbNao = new javax.swing.JRadioButton();
         lblLicenca = new javax.swing.JLabel();
         btnAddLicenca = new javax.swing.JButton();
+        btnTrocaLicenca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -142,6 +147,12 @@ public class CadPc extends javax.swing.JFrame {
 
         jLabel7.setText("Nome Computador");
 
+        txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisarActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("Quantidade de máquinas");
 
         txtQtdMaquinas.setEditable(false);
@@ -184,6 +195,13 @@ public class CadPc extends javax.swing.JFrame {
         btnAddLicenca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddLicencaActionPerformed(evt);
+            }
+        });
+
+        btnTrocaLicenca.setText("Trocar Licença");
+        btnTrocaLicenca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrocaLicencaActionPerformed(evt);
             }
         });
 
@@ -238,8 +256,15 @@ public class CadPc extends javax.swing.JFrame {
                         .addComponent(lblLicenca))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(btnAddLicenca)))
+                        .addComponent(btnAddLicenca))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnTrocaLicenca)
+                        .addGap(37, 37, 37)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(jLabel7)
@@ -251,11 +276,8 @@ public class CadPc extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtQtdMaquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(194, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                        .addGap(0, 188, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,9 +296,6 @@ public class CadPc extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(73, 73, 73))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(txtNomeComputador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -312,7 +331,9 @@ public class CadPc extends javax.swing.JFrame {
                         .addComponent(txtLicenca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAddLicenca, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(btnTrocaLicenca)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCadastrar)
                             .addComponent(btnLimpar))
@@ -320,7 +341,10 @@ public class CadPc extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAlterar)
                             .addComponent(btnSair))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(76, 76, 76))))
         );
 
         pack();
@@ -593,7 +617,7 @@ public class CadPc extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
@@ -663,6 +687,41 @@ public class CadPc extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAddLicencaActionPerformed
 
+    private void btnTrocaLicencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrocaLicencaActionPerformed
+        // TODO add your handling code here:
+        
+         LicencaDAO dao = new LicencaDAO();
+        JTextField licenca = new JTextField(20);
+      JTextField pc = new JTextField(7);
+
+      JPanel myPanel = new JPanel();
+      myPanel.add(new JLabel("Chave de acesso"));
+      myPanel.add(licenca);
+      myPanel.add(Box.createVerticalStrut(10)); // a spacer
+      myPanel.add(new JLabel("Computador"));
+      myPanel.add(pc);
+
+      int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Digite a chave de acesso e o computador que ela será aplicada", JOptionPane.OK_CANCEL_OPTION);
+      if (result == JOptionPane.OK_OPTION) {
+             try {
+                 dao.alter_PcLicenca(pc.getText(), licenca.getText());
+             } catch (SQLException ex) {
+                 Logger.getLogger(CadPc.class.getName()).log(Level.SEVERE, null, ex);
+             }
+      
+      }
+      else{
+          JOptionPane.showMessageDialog(null, "Operação cancelada");
+      }
+      
+     
+    }//GEN-LAST:event_btnTrocaLicencaActionPerformed
+
+    private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
+        // TODO add your handling code h
+    }//GEN-LAST:event_txtPesquisarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -705,6 +764,7 @@ public class CadPc extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnTrocaLicenca;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton cbNao;
     private javax.swing.JRadioButton cbSim;

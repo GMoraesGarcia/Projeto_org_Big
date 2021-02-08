@@ -152,5 +152,27 @@ public class LicencaDAO {
 
         }
     }
+    
+    public void alter_PcLicenca(String nomePc, String codAcesso) throws SQLException{
+        String sql = "update licencaPorComputador set id_pc = (select id_pc from computador where nome_computador = ? ) where id_licenca = (select id from licenca where acesso = ?)";
+          try (Connection conn = ConnectBd.obterConexao()) {
+
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, nomePc);
+                stmt.setString(2, codAcesso);
+                stmt.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Troca realizada com ");
+                conn.commit();
+
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+
+        }
+    
+    }
 
 }
